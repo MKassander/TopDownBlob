@@ -17,10 +17,9 @@ public class PlayerMovement : MonoBehaviour
         Rigidbody.MovePosition(transform.position + input * (Time.deltaTime * speed));
 
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
- 
-        if (groundPlane.Raycast(cameraRay, out rayLength))
+        Plane ground = new Plane(Vector3.up, Vector3.zero);
+
+        if (ground.Raycast(cameraRay, out var rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.cyan);
