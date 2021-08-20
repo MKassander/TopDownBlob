@@ -12,6 +12,10 @@ public class DamageOnContact : MonoBehaviour
         {
             other.gameObject.GetComponent<Health>().Damage(contactDamage);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
         Destroy(gameObject);
     }
 }

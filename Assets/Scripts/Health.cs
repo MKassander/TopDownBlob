@@ -31,12 +31,4 @@ public class Health : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && player)
-        {
-            Damage(10);
-        }
-    }
 }
