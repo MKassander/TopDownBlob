@@ -9,6 +9,8 @@ public class Shoot : MonoBehaviour
     private bool Ready = true;
     public int delay;
 
+    public CooldownVisual cooldownVisual;
+
     public void Fire()
     {
         var proj = Instantiate(projectile);
@@ -17,6 +19,8 @@ public class Shoot : MonoBehaviour
 
         Ready = false;
         animator.SetTrigger("AttackTrigger");
+        
+        cooldownVisual.TriggerCoolDown(delay);
         
         Invoke(nameof(SetReady), delay);
     }
