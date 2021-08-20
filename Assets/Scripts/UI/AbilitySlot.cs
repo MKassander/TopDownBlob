@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CooldownVisual : MonoBehaviour
+public class AbilitySlot : MonoBehaviour
 {
     private Slider slider => GetComponentInChildren<Slider>();
-
+    private Image Image => GetComponent<Image>();
     private float Timer;
 
     public void TriggerCoolDown(float time)

@@ -9,7 +9,7 @@ public class Shoot : MonoBehaviour
     private bool Ready = true;
     public int delay;
 
-    public CooldownVisual cooldownVisual;
+    public AbilitySlot abilitySlot;
 
     public void Fire()
     {
@@ -20,7 +20,7 @@ public class Shoot : MonoBehaviour
         Ready = false;
         animator.SetTrigger("AttackTrigger");
         
-        cooldownVisual.TriggerCoolDown(delay);
+        abilitySlot.TriggerCoolDown(delay);
         
         Invoke(nameof(SetReady), delay);
     }
