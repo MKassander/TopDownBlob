@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
+    private Shoot shoot => GetComponent<Shoot>();
     public GameObject shield;
     public AbilitySlot abilitySlot;
     public float delay;
@@ -17,6 +18,7 @@ public class Shield : MonoBehaviour
         {
             shield.SetActive(true);
             Ready = false;
+            shoot.available = false;
             
             abilitySlot.TriggerCoolDown(delay);
             
@@ -29,6 +31,7 @@ public class Shield : MonoBehaviour
     void DisableShield()
     {
         shield.SetActive(false);
+        shoot.available = true;
     }
 
     void SetReady()

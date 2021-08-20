@@ -8,6 +8,7 @@ public class Shoot : MonoBehaviour
     public Transform spawnPoint;
     private bool Ready = true;
     public int delay;
+    public bool available = true;
 
     public AbilitySlot abilitySlot;
 
@@ -27,7 +28,7 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready && available)
         {
             Fire();
         }

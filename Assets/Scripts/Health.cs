@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     private Animator animator => GetComponent<Animator>();
-    public int health;
+    [HideInInspector]public int health;
     public int maxHealth;
     public bool player;
     public bool dead;
