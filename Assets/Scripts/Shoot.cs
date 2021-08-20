@@ -4,6 +4,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     [HideInInspector]public GameObject projectile;
+    private Animator animator => GetComponent<Animator>();
     public Transform spawnPoint;
     private bool Ready = true;
     public int delay;
@@ -15,6 +16,7 @@ public class Shoot : MonoBehaviour
         proj.transform.rotation = spawnPoint.rotation;
 
         Ready = false;
+        animator.SetTrigger("AttackTrigger");
         
         Invoke(nameof(SetReady), delay);
     }

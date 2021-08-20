@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody Rigidbody => GetComponent<Rigidbody>();
+    private Health health => GetComponent<Health>();
 
     public float speed;
     private Vector2 MousePos;
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (health.dead) return;
+        
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
         Rigidbody.MovePosition(transform.position + input * (Time.deltaTime * speed));
 
