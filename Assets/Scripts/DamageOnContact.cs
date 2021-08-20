@@ -6,16 +6,18 @@ using UnityEngine;
 public class DamageOnContact : MonoBehaviour
 {
     public int contactDamage;
+    public bool player;
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Damageable"))
         {
             other.gameObject.GetComponent<Health>().Damage(contactDamage);
+            Debug.Log("contact");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (!player) Destroy(gameObject);
     }
 }
