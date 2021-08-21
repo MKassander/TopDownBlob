@@ -5,6 +5,7 @@ public class Shoot : MonoBehaviour
 {
     [HideInInspector]public GameObject projectile;
     private Animator animator => GetComponent<Animator>();
+    private Health health => GetComponent<Health>();
     public Transform spawnPoint;
     private bool Ready = true;
     public int delay;
@@ -28,7 +29,7 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready && available)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready && available && !health.dead)
         {
             Fire();
         }
