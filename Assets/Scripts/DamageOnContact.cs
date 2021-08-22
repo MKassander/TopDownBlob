@@ -12,7 +12,6 @@ public class DamageOnContact : MonoBehaviour
         if (other.gameObject.CompareTag("Damageable"))
         {
             other.gameObject.GetComponent<Health>().Damage(contactDamage);
-            Debug.Log("contact");
         }
     }
 

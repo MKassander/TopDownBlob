@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [HideInInspector]public int health;
     public int maxHealth;
     public bool player;
+    public bool enemy;
     public bool dead;
 
     private void Start()
@@ -24,6 +25,10 @@ public class Health : MonoBehaviour
 
     void Death()
     {
+        if (enemy)
+        {
+            Progress.instance.AddProgress();
+        }
         if (animator != null)
         {
             animator.SetTrigger("DeathTrigger");
