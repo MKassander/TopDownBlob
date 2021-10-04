@@ -3,24 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour, IAbility
+public class DefensiveAbility : MonoBehaviour, Itrigger
 {
-    private Shoot shoot => GetComponent<Shoot>();
+    private ShootAbility ShootAbility => GetComponent<ShootAbility>();
     public GameObject shield;
     public AbilitySlot abilitySlot;
     public float delay;
     public float shieldLength;
     private bool Ready = true;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && Ready) Trigger();
-    }
-
     void DisableShield()
     {
         shield.SetActive(false);
-        shoot.available = true;
+        ShootAbility.available = true;
     }
 
     void SetReady()
@@ -30,9 +25,10 @@ public class Shield : MonoBehaviour, IAbility
 
     public void Trigger()
     {
+        if (!Ready) return;
         shield.SetActive(true);
         Ready = false;
-        shoot.available = false;
+        ShootAbility.available = false;
             
         abilitySlot.TriggerCoolDown(delay);
             

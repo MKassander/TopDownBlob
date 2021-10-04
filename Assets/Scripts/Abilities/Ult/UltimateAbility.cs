@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grow : MonoBehaviour
+public class UltimateAbility : MonoBehaviour, Itrigger
 {
-    private Shoot shoot => GetComponent<Shoot>();
+    private ShootAbility ShootAbility => GetComponent<ShootAbility>();
     
     public float growSpeed, growTime, duration;
     private bool growing, shrink;
@@ -24,29 +24,6 @@ public class Grow : MonoBehaviour
             if (transform.localScale.x <= 2) shrink = false;
         }
     }
-    
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && Ready)
-        {
-            TriggerGrowth();
-        }
-    }
-
-    void TriggerGrowth()
-    {
-        damageOnContact.contactDamage = 40;
-        
-        shoot.available = false;
-        
-        growing = true;
-        Invoke(nameof(StopGrowing), growTime);
-
-        Ready = false;
-        Invoke(nameof(SetReady), delay);
-            
-        abilitySlot.TriggerCoolDown(delay);
-    }
 
     void StopGrowing()
     {
@@ -58,11 +35,26 @@ public class Grow : MonoBehaviour
     {
         shrink = true;
         damageOnContact.contactDamage = 5;
-        shoot.available = true;
+        ShootAbility.available = true;
     }
 
     void SetReady()
     {
         Ready = true;
+    }
+
+    public void Trigger()
+    {
+        damageOnContact.contactDamage = 40;
+        
+        ShootAbility.available = false;
+        
+        growing = true;
+        Invoke(nameof(StopGrowing), growTime);
+
+        Ready = false;
+        Invoke(nameof(SetReady), delay);
+            
+        abilitySlot.TriggerCoolDown(delay);
     }
 }

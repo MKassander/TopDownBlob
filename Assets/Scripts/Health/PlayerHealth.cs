@@ -7,7 +7,7 @@ public class PlayerHealth : Health
     public override void Damage(int amount)
     {
         base.Damage(amount);
-        HealthBar.instance.UpdateVal();
+        HealthBar.instance.UpdateVal(HealthValue);
         AnimatorComp.SetTrigger("HitTrigger");
     }
 

@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class Shoot : MonoBehaviour, IAbility
+public class ShootAbility : MonoBehaviour, Itrigger
 {
-    [HideInInspector]public GameObject projectile;
+    [SerializeField] private GameObject projectile;
     private Animator animator => GetComponent<Animator>();
     public Transform spawnPoint;
     private bool Ready = true;
@@ -12,11 +12,6 @@ public class Shoot : MonoBehaviour, IAbility
 
     public AbilitySlot abilitySlot;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready && available) Trigger();
-    }
-
     void SetReady()
     {
         Ready = true;
@@ -24,6 +19,7 @@ public class Shoot : MonoBehaviour, IAbility
 
     public void Trigger()
     {
+        if (!Ready || !available) return;
         var proj = Instantiate(projectile);
         proj.transform.position = spawnPoint.position;
         proj.transform.rotation = spawnPoint.rotation;
