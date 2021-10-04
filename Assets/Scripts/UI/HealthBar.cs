@@ -15,8 +15,8 @@ public class HealthBar : MonoBehaviour
         instance = this;
     }
 
-    public void Update()
+    public void UpdateVal()
     {
-        slider.value = health.health;
+        slider.value = health.HealthValue;
     }
 }

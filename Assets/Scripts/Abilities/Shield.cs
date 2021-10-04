@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : MonoBehaviour, IAbility
 {
     private Shoot shoot => GetComponent<Shoot>();
     public GameObject shield;
@@ -14,18 +14,7 @@ public class Shield : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1) && Ready)
-        {
-            shield.SetActive(true);
-            Ready = false;
-            shoot.available = false;
-            
-            abilitySlot.TriggerCoolDown(delay);
-            
-            Invoke(nameof(DisableShield), shieldLength);
-            
-            Invoke(nameof(SetReady), delay);
-        }
+        if (Input.GetKeyDown(KeyCode.Mouse1) && Ready) Trigger();
     }
 
     void DisableShield()
@@ -37,5 +26,18 @@ public class Shield : MonoBehaviour
     void SetReady()
     {
         Ready = true;
+    }
+
+    public void Trigger()
+    {
+        shield.SetActive(true);
+        Ready = false;
+        shoot.available = false;
+            
+        abilitySlot.TriggerCoolDown(delay);
+            
+        Invoke(nameof(DisableShield), shieldLength);
+            
+        Invoke(nameof(SetReady), delay);
     }
 }

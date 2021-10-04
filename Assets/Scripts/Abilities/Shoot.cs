@@ -1,11 +1,10 @@
 
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class Shoot : MonoBehaviour, IAbility
 {
     [HideInInspector]public GameObject projectile;
     private Animator animator => GetComponent<Animator>();
-    private Health health => GetComponent<Health>();
     public Transform spawnPoint;
     private bool Ready = true;
     public int delay;
@@ -13,7 +12,17 @@ public class Shoot : MonoBehaviour
 
     public AbilitySlot abilitySlot;
 
-    public void Fire()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready && available) Trigger();
+    }
+
+    void SetReady()
+    {
+        Ready = true;
+    }
+
+    public void Trigger()
     {
         var proj = Instantiate(projectile);
         proj.transform.position = spawnPoint.position;
@@ -25,18 +34,5 @@ public class Shoot : MonoBehaviour
         abilitySlot.TriggerCoolDown(delay);
         
         Invoke(nameof(SetReady), delay);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Ready && available && !health.dead)
-        {
-            Fire();
-        }
-    }
-
-    void SetReady()
-    {
-        Ready = true;
     }
 }

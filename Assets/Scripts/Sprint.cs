@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Sprint : MonoBehaviour
 {
-    private Rigidbody Rigidbody => GetComponent<Rigidbody>();
     public AbilitySlot abilitySlot;
-    private Health health => GetComponent<Health>();
 
     public float leap;
     public float delay;
@@ -14,7 +12,7 @@ public class Sprint : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !health.dead && Ready)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Ready)
         {
             Vector3 newPosition = transform.position + transform.TransformDirection (new Vector3(0,0,leap));
             transform.position = newPosition;

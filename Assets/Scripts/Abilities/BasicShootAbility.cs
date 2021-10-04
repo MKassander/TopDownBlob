@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicShootAbility : MonoBehaviour
@@ -16,7 +13,7 @@ public class BasicShootAbility : MonoBehaviour
 
     public void Shoot()
     {
-        shoot.Fire();
+        shoot.Trigger();
     }
 
     public void Assign()
