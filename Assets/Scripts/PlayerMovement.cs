@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
-        Rigidbody.MovePosition(transform.position + input * (Time.deltaTime * speed));
+        Rigidbody.MovePosition(transform.position + input.normalized * (Time.deltaTime * speed));
 
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, Vector3.zero);

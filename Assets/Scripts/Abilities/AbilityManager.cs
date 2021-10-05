@@ -7,11 +7,13 @@ public class AbilityManager : MonoBehaviour
     private DefensiveAbility DefensiveAbility => GetComponent<DefensiveAbility>();
     private UltimateAbility UltimateAbility => GetComponent<UltimateAbility>();
 
+    [SerializeField] private KeyCode shootKey, movementKey, defenseKey, ultKey;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) ShootAbility.Trigger();
-        if (Input.GetKeyDown(KeyCode.LeftShift)) MovementAbility.Trigger();
-        if (Input.GetKeyDown(KeyCode.Mouse1)) DefensiveAbility.Trigger();
-        if (Input.GetKeyDown(KeyCode.Space)) UltimateAbility.Trigger();
+        if (Input.GetKeyDown(shootKey)) ShootAbility.Trigger();
+        if (Input.GetKeyDown(movementKey)) MovementAbility.Trigger();
+        if (Input.GetKeyDown(defenseKey)) DefensiveAbility.Trigger();
+        if (Input.GetKeyDown(ultKey)) UltimateAbility.Trigger();
     }
 }

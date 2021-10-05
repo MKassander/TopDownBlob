@@ -7,7 +7,7 @@ public class DefensiveAbility : MonoBehaviour, Itrigger
 {
     [SerializeField] private SO_Defensive shield;
     private ShootAbility ShootAbility => GetComponent<ShootAbility>();
-    public AbilitySlot abilitySlot;
+    [SerializeField] private AbilitySlot abilitySlot;
     private bool Ready = true;
     private GameObject shieldGo;
     [SerializeField] private Transform prefabParent;

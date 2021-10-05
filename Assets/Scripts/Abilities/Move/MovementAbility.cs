@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class MovementAbility : MonoBehaviour, Itrigger
 {
-    public AbilitySlot abilitySlot;
+    [SerializeField] private AbilitySlot abilitySlot;
+    [SerializeField] private SO_Movement movementSo;
 
-    public float leap;
-    public float delay;
     private bool Ready = true;
 
-    void SetReady()
+    IEnumerator SetReady()
     {
+        yield return new WaitForSeconds(movementSo.delay);
         Ready = true;
     }
 
     public void Trigger()
     {
         if (!Ready) return;
-        Vector3 newPosition = transform.position + transform.TransformDirection (new Vector3(0,0,leap));
+        Vector3 newPosition = transform.position + transform.TransformDirection (new Vector3(0,0,movementSo.leap));
         transform.position = newPosition;
 
         Ready = false;
             
-        abilitySlot.TriggerCoolDown(delay);
-        
-        Invoke(nameof(SetReady), delay);
+        abilitySlot.TriggerCoolDown(movementSo.delay);
+
+        StartCoroutine(SetReady());
     }
 }
