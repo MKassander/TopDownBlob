@@ -13,6 +13,5 @@ public class AbilityManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift)) MovementAbility.Trigger();
         if (Input.GetKeyDown(KeyCode.Mouse1)) DefensiveAbility.Trigger();
         if (Input.GetKeyDown(KeyCode.Space)) UltimateAbility.Trigger();
-        
     }
 }

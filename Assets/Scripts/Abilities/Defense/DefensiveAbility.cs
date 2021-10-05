@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class DefensiveAbility : MonoBehaviour, Itrigger
 {
+    [SerializeField] private SO_Defensive shield;
     private ShootAbility ShootAbility => GetComponent<ShootAbility>();
-    public GameObject shield;
     public AbilitySlot abilitySlot;
-    public float delay;
-    public float shieldLength;
     private bool Ready = true;
+    private GameObject shieldGo;
+    [SerializeField] private Transform prefabParent;
 
     void DisableShield()
     {
-        shield.SetActive(false);
+        Destroy(shieldGo.gameObject);
         ShootAbility.available = true;
     }
 
@@ -26,14 +26,16 @@ public class DefensiveAbility : MonoBehaviour, Itrigger
     public void Trigger()
     {
         if (!Ready) return;
-        shield.SetActive(true);
+        var go = Instantiate(shield.prefab, prefabParent);
+        shieldGo = go;
+        
         Ready = false;
         ShootAbility.available = false;
             
-        abilitySlot.TriggerCoolDown(delay);
+        abilitySlot.TriggerCoolDown(shield.delay);
             
-        Invoke(nameof(DisableShield), shieldLength);
+        Invoke(nameof(DisableShield), shield.duration);
             
-        Invoke(nameof(SetReady), delay);
+        Invoke(nameof(SetReady), shield.delay);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DamageOnContact : MonoBehaviour
@@ -8,11 +9,9 @@ public class DamageOnContact : MonoBehaviour
     {
         if (enemy)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                other.gameObject.GetComponent<Health>().Damage(contactDamage);
-                Destroy(gameObject);
-            }
+            if (!other.gameObject.CompareTag("Player")) return;
+            other.gameObject.GetComponent<Health>().Damage(contactDamage);
+            Destroy(gameObject);
         }
         else
         {
@@ -20,6 +19,13 @@ public class DamageOnContact : MonoBehaviour
             other.gameObject.GetComponent<Health>().Damage(contactDamage);
             if (!player) Destroy(gameObject);
         }
-        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (enemy)
+        {
+            Destroy(gameObject);
+        }
     }
 }
