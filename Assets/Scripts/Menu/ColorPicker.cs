@@ -5,27 +5,27 @@ using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {
-    public SkinnedMeshRenderer SkinnedMeshRenderer;
-    public Color[] Colors;
-    private int Index;
+    [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
+    [SerializeField] private Color[] colors;
+    private int _index;
 
     public void ToggleNextColor()
     {
-        if (Index == Colors.Length-1) Index = 0;
-        else Index++;
+        if (_index == colors.Length-1) _index = 0;
+        else _index++;
         SetColor();
     }
     
     public void ToggleLastColor()
     {
-        if (Index == 0) Index = Colors.Length-1;
-        else Index--;
+        if (_index == 0) _index = colors.Length-1;
+        else _index--;
         SetColor();
     }
 
     void SetColor()
     {
-        SkinnedMeshRenderer.material.color = Colors[Index];
-        CharacterColor.PlayerColor = Colors[Index];
+        skinnedMeshRenderer.material.color = colors[_index];
+        CharacterColor.PlayerColor = colors[_index];
     }
 }

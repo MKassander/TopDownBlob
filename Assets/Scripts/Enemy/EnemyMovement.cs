@@ -5,18 +5,15 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Rigidbody rigidbody => GetComponent<Rigidbody>();
-    readonly Vector3 Direction = new Vector3(0, 0, 1);
+    private Detection Detection => GetComponent<Detection>();
+    private Rigidbody Rigidbody => GetComponent<Rigidbody>();
     [SerializeField] private int speed;
-    [SerializeField] private Transform player;
 
-    [HideInInspector]public bool PlayerInRange;
+
     private void FixedUpdate()
     {
-        if (PlayerInRange)
-        {
-            transform.LookAt(player);
-            rigidbody.MovePosition(transform.position + transform.TransformDirection(Direction) * (Time.deltaTime * speed));
-        }
+        if (!Detection.playerInRange) return;
+        transform.LookAt(Detection.player);
+        Rigidbody.MovePosition(transform.position + transform.TransformDirection(Vector3.forward) * (Time.deltaTime * speed));
     }
 }

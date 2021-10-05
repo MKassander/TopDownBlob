@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    private Slider slider => GetComponent<Slider>();
+    private Slider Slider => GetComponent<Slider>();
     public static HealthBar instance;
 
     private void Start()
@@ -16,6 +16,6 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateVal(int val)
     {
-        slider.value = val;
+        Slider.value = val;
     }
 }
