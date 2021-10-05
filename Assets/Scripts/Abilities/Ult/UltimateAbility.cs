@@ -25,20 +25,20 @@ public class UltimateAbility : MonoBehaviour, Itrigger
         }
     }
 
-    void StopGrowing()
+    private void StopGrowing()
     {
         growing = false;
         Invoke(nameof(SetShrink), duration);
     }
 
-    void SetShrink()
+    private void SetShrink()
     {
         shrink = true;
         damageOnContact.contactDamage = 5;
         ShootAbility.available = true;
     }
 
-    void SetReady()
+    private void SetReady()
     {
         Ready = true;
     }

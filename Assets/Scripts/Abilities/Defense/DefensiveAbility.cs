@@ -12,13 +12,13 @@ public class DefensiveAbility : MonoBehaviour, Itrigger
     private GameObject shieldGo;
     [SerializeField] private Transform prefabParent;
 
-    void DisableShield()
+    private void DisableShield()
     {
         Destroy(shieldGo.gameObject);
         ShootAbility.available = true;
     }
 
-    void SetReady()
+    private void SetReady()
     {
         Ready = true;
     }
