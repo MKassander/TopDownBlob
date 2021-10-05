@@ -1,47 +1,53 @@
 using System.Collections;
 using UnityEngine;
 
-public class DefaultUltimateAbility : UltimateAbility
+namespace Abilities.Ult
 {
-    [SerializeField] private float growSpeed, growTime, duration;
-    private bool growing, shrink;
-
-    private DamageOnContact DamageOnContact => GetComponent<DamageOnContact>();
-
-    private void FixedUpdate()
+    public class DefaultUltimateAbility : UltimateAbility
     {
-        if (growing) transform.localScale += new Vector3(1, 1, 1) * (Time.deltaTime * growSpeed);
-        if (shrink)
+        [SerializeField] private float growSpeed, growTime, duration;
+        private bool _growing, _shrink;
+
+        private DamageOnContact DamageOnContact => GetComponent<DamageOnContact>();
+    
+
+        private void FixedUpdate()
         {
-            transform.localScale -= new Vector3(1, 1, 1) * (Time.deltaTime * growSpeed);
-            if (transform.localScale.x <= 2) shrink = false;
+            if (_growing) transform.localScale += new Vector3(1, 1, 1) * (Time.deltaTime * growSpeed);
+            if (_shrink)
+            {
+                transform.localScale -= new Vector3(1, 1, 1) * (Time.deltaTime * growSpeed);
+                if (transform.localScale.x <= 2) _shrink = false;
+            }
         }
-    }
 
-    IEnumerator StopGrowing()
-    {
-        yield return new WaitForSeconds(growTime);
-        growing = false;
-        StartCoroutine(SetShrink());
-    }
+        private IEnumerator StopGrowing()
+        {
+            yield return new WaitForSeconds(growTime);
+            _growing = false;
+            StartCoroutine(SetShrink());
+        }
 
-    IEnumerator SetShrink()
-    {
-        yield return new WaitForSeconds(duration);
-        shrink = true;
-        DamageOnContact.contactDamage = 5;
-        ShootAbility.available = true;
-    }
+        private IEnumerator SetShrink()
+        {
+            yield return new WaitForSeconds(duration);
+            _shrink = true;
+            DamageOnContact.contactDamage = 5;
+            ShootAbility.available = true;
+            PlayerHealth.canBeDamaged = true;
+        }
 
-    public override void Trigger()
-    {
-        DamageOnContact.contactDamage = 40;
+        public override void Trigger()
+        {
+            if (!ready) return;
+            DamageOnContact.contactDamage = 40;
+            ShootAbility.available = false;
+            PlayerHealth.canBeDamaged = false;
         
-        ShootAbility.available = false;
-        
-        growing = true;
-        StartCoroutine(StopGrowing());
+            _growing = true;
+            StartCoroutine(StopGrowing());
 
-        base.Trigger();
+            base.Trigger();
+        }
     }
 }

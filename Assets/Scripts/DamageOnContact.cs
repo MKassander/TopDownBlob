@@ -1,4 +1,4 @@
-using System;
+using Healths;
 using UnityEngine;
 
 public class DamageOnContact : MonoBehaviour

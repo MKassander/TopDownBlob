@@ -1,37 +1,38 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Abilities;
+using Abilities.Shoot;
+using UI;
 using UnityEngine;
 
-public class DefensiveAbility : MonoBehaviour, Itrigger
+public class DefensiveAbility : MonoBehaviour, ITrigger
 {
-    [SerializeField] private SO_Defensive shield;
+    [SerializeField] private SoDefensive shield;
     private ShootAbility ShootAbility => GetComponent<ShootAbility>();
     [SerializeField] private AbilitySlot abilitySlot;
-    private bool Ready = true;
-    private GameObject shieldGo;
+    private bool _ready = true;
+    private GameObject _shieldGo;
     [SerializeField] private Transform prefabParent;
 
-    IEnumerator DisableShield()
+    private IEnumerator DisableShield()
     {
         yield return new WaitForSeconds(shield.duration);
-        Destroy(shieldGo.gameObject);
+        Destroy(_shieldGo.gameObject);
         ShootAbility.available = true;
     }
 
-    IEnumerator SetReady()
+    private IEnumerator SetReady()
     {
         yield return new WaitForSeconds(shield.delay);
-        Ready = true;
+        _ready = true;
     }
 
     public void Trigger()
     {
-        if (!Ready) return;
+        if (!_ready) return;
         var go = Instantiate(shield.prefab, prefabParent);
-        shieldGo = go;
+        _shieldGo = go;
         
-        Ready = false;
+        _ready = false;
         ShootAbility.available = false;
             
         abilitySlot.TriggerCoolDown(shield.delay);

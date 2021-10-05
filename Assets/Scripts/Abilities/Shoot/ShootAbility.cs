@@ -1,38 +1,41 @@
-
-using System;
 using System.Collections;
+using UI;
 using UnityEngine;
 
-public class ShootAbility : MonoBehaviour, Itrigger
+namespace Abilities.Shoot
 {
-    [SerializeField] private SO_Projectile projectile;
-    private Animator Animator => GetComponent<Animator>();
-    public Transform spawnPoint;
-    private bool _ready = true;
-    public bool available = true;
-
-    public AbilitySlot abilitySlot;
-
-    private IEnumerator SetReady()
+    public class ShootAbility : MonoBehaviour, ITrigger
     {
-        yield return new WaitForSeconds(projectile.delay);
-        _ready = true;
-    }
+        [SerializeField] private SoProjectile projectile;
+        private Animator Animator => GetComponent<Animator>();
+        public Transform spawnPoint;
+        private bool _ready = true;
+        public bool available = true;
 
-    public void Trigger()
-    {
-        if (!_ready || !available) return;
-        var proj = Instantiate(projectile.prefab);
-        proj.transform.position = spawnPoint.position;
-        proj.transform.rotation = spawnPoint.rotation;
+        public AbilitySlot abilitySlot;
+        private static readonly int AttackTrigger = Animator.StringToHash("AttackTrigger");
 
-        proj.GetComponent<DamageOnContact>().contactDamage = projectile.damage;
+        private IEnumerator SetReady()
+        {
+            yield return new WaitForSeconds(projectile.delay);
+            _ready = true;
+        }
 
-        _ready = false;
-        Animator.SetTrigger("AttackTrigger");
+        public void Trigger()
+        {
+            if (!_ready || !available) return;
+            var proj = Instantiate(projectile.prefab);
+            proj.transform.position = spawnPoint.position;
+            proj.transform.rotation = spawnPoint.rotation;
+
+            proj.GetComponent<DamageOnContact>().contactDamage = projectile.damage;
+
+            _ready = false;
+            Animator.SetTrigger(AttackTrigger);
         
-        abilitySlot.TriggerCoolDown(projectile.delay);
+            abilitySlot.TriggerCoolDown(projectile.delay);
 
-        StartCoroutine(SetReady());
+            StartCoroutine(SetReady());
+        }
     }
 }

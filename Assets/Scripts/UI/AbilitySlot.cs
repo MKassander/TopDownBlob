@@ -1,27 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbilitySlot : MonoBehaviour
+namespace UI
 {
-    private Slider slider => GetComponentInChildren<Slider>();
-    private Image Image => GetComponent<Image>();
-    private float Timer;
-
-    public void TriggerCoolDown(float time)
+    public class AbilitySlot : MonoBehaviour
     {
-        slider.maxValue = time;
-        Timer = time;
-    }
+        private Slider Slider => GetComponentInChildren<Slider>();
+        private Image Image => GetComponent<Image>();
+        private float _timer;
 
-    private void Update()
-    {
-        if (Timer > 0)
+        public void TriggerCoolDown(float time)
         {
-            Timer -= Time.deltaTime;
-            slider.value = Timer;
+            Slider.maxValue = time;
+            _timer = time;
+        }
+
+        private void Update()
+        {
+            if (!(_timer > 0)) return;
+            _timer -= Time.deltaTime;
+            Slider.value = _timer;
         }
     }
 }

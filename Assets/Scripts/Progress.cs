@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +5,8 @@ public class Progress : MonoBehaviour
 {
     public static Progress instance;
 
-    private int Level = 1;
-    private int CurrentProgress;
+    private int _level = 1;
+    private int _currentProgress;
     public int xpAmount;
     private Slider ProgressSlider => GetComponent<Slider>();
 
@@ -20,15 +17,14 @@ public class Progress : MonoBehaviour
 
     public void AddProgress()
     {
-        CurrentProgress += xpAmount;
-        ProgressSlider.value = CurrentProgress;
-        if (CurrentProgress >= ProgressSlider.maxValue)
-        {
-            Level++;
-            Debug.Log("Level " + Level);
-            ProgressSlider.value = ProgressSlider.minValue;
-            CurrentProgress = (int)ProgressSlider.minValue;
-            //Upgrade or whatev
-        }
+        _currentProgress += xpAmount;
+        ProgressSlider.value = _currentProgress;
+        
+        if (!(_currentProgress >= ProgressSlider.maxValue)) return;
+        _level++;
+        Debug.Log("Level " + _level);
+        ProgressSlider.value = ProgressSlider.minValue;
+        _currentProgress = (int)ProgressSlider.minValue;
+        //TODO: Add 
     }
 }

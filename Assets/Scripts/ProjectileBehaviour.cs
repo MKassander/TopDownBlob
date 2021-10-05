@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,12 +13,12 @@ public class ProjectileBehaviour : MonoBehaviour
         StartCoroutine(DestroyThis());
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         RigidBody.MovePosition(transform.position + transform.TransformDirection(Vector3.forward) * (Time.deltaTime * speed));
     }
 
-    IEnumerator DestroyThis()
+    private IEnumerator DestroyThis()
     {
         yield return new WaitForSeconds(destroyAfter);
         Destroy(gameObject);

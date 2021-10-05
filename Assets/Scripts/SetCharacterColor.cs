@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using Menu;
 using UnityEngine;
 
 public class SetCharacterColor : MonoBehaviour
 {
     private SkinnedMeshRenderer SkinnedMeshRenderer => GetComponent<SkinnedMeshRenderer>();
-    void Start()
+
+    private void Start()
     {
-        SkinnedMeshRenderer.material.color = CharacterColor.PlayerColor;
+        SkinnedMeshRenderer.material.color = CharacterColor.playerColor;
     }
 }

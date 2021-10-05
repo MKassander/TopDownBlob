@@ -1,28 +1,32 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Abilities.Shoot;
+using Healths;
+using UI;
 using UnityEngine;
 
-public abstract class UltimateAbility : MonoBehaviour, Itrigger
+namespace Abilities.Ult
 {
-    protected ShootAbility ShootAbility => GetComponent<ShootAbility>();
-
-    private bool Ready = true;
-    [SerializeField] private float delay;
+    public abstract class UltimateAbility : MonoBehaviour, ITrigger
+    {
+        protected ShootAbility ShootAbility => GetComponent<ShootAbility>();
+        protected PlayerHealth PlayerHealth => GetComponent<PlayerHealth>();
+        protected bool ready = true;
+        [SerializeField] private float delay;
     
-    [SerializeField] private AbilitySlot abilitySlot;
+        [SerializeField] private AbilitySlot abilitySlot;
 
-    IEnumerator SetReady()
-    {
-        yield return new WaitForSeconds(delay);
-        Ready = true;
-    }
+        private IEnumerator SetReady()
+        {
+            yield return new WaitForSeconds(delay);
+            ready = true;
+        }
 
-    public virtual void Trigger()
-    {
-        Ready = false;
-        StartCoroutine(SetReady());
+        public virtual void Trigger()
+        {
+            ready = false;
+            StartCoroutine(SetReady());
 
-        abilitySlot.TriggerCoolDown(delay);
+            abilitySlot.TriggerCoolDown(delay);
+        }
     }
 }

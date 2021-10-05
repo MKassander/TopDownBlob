@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,16 +5,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody Rigidbody => GetComponent<Rigidbody>();
 
     public float speed;
-    private Vector2 MousePos;
-    
+    private Vector2 _mousePos;
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
+        var input = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
         Rigidbody.MovePosition(transform.position + input.normalized * (Time.deltaTime * speed));
 
-        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane ground = new Plane(Vector3.up, Vector3.zero);
+        var cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var ground = new Plane(Vector3.up, Vector3.zero);
 
         if (ground.Raycast(cameraRay, out var rayLength))
         {

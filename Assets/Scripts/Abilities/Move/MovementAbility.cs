@@ -1,30 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
-public class MovementAbility : MonoBehaviour, Itrigger
+namespace Abilities.Move
 {
-    [SerializeField] private AbilitySlot abilitySlot;
-    [SerializeField] private SO_Movement movementSo;
-
-    private bool Ready = true;
-
-    IEnumerator SetReady()
+    public class MovementAbility : MonoBehaviour, ITrigger
     {
-        yield return new WaitForSeconds(movementSo.delay);
-        Ready = true;
-    }
+        [SerializeField] private AbilitySlot abilitySlot;
+        [SerializeField] private SoMovement movementSo;
 
-    public void Trigger()
-    {
-        if (!Ready) return;
-        Vector3 newPosition = transform.position + transform.TransformDirection (new Vector3(0,0,movementSo.leap));
-        transform.position = newPosition;
+        private bool _ready = true;
 
-        Ready = false;
+        private IEnumerator SetReady()
+        {
+            yield return new WaitForSeconds(movementSo.delay);
+            _ready = true;
+        }
+
+        public void Trigger()
+        {
+            if (!_ready) return;
+            var newPosition = transform.position + transform.TransformDirection (new Vector3(0,0,movementSo.leap));
+            transform.position = newPosition;
+
+            _ready = false;
             
-        abilitySlot.TriggerCoolDown(movementSo.delay);
+            abilitySlot.TriggerCoolDown(movementSo.delay);
 
-        StartCoroutine(SetReady());
+            StartCoroutine(SetReady());
+        }
     }
 }
