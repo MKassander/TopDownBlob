@@ -1,36 +1,38 @@
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class ShootAbility : MonoBehaviour, Itrigger
 {
     [SerializeField] private SO_Projectile projectile;
-    private Animator animator => GetComponent<Animator>();
+    private Animator Animator => GetComponent<Animator>();
     public Transform spawnPoint;
-    private bool Ready = true;
+    private bool _ready = true;
     public bool available = true;
 
     public AbilitySlot abilitySlot;
 
-    void SetReady()
+    private IEnumerator SetReady()
     {
-        Ready = true;
+        yield return new WaitForSeconds(projectile.delay);
+        _ready = true;
     }
 
     public void Trigger()
     {
-        if (!Ready || !available) return;
+        if (!_ready || !available) return;
         var proj = Instantiate(projectile.prefab);
         proj.transform.position = spawnPoint.position;
         proj.transform.rotation = spawnPoint.rotation;
 
         proj.GetComponent<DamageOnContact>().contactDamage = projectile.damage;
 
-        Ready = false;
-        animator.SetTrigger("AttackTrigger");
+        _ready = false;
+        Animator.SetTrigger("AttackTrigger");
         
         abilitySlot.TriggerCoolDown(projectile.delay);
-        
-        Invoke(nameof(SetReady), projectile.delay);
+
+        StartCoroutine(SetReady());
     }
 }

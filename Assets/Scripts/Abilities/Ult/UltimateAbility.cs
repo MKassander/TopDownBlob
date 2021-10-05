@@ -25,21 +25,24 @@ public class UltimateAbility : MonoBehaviour, Itrigger
         }
     }
 
-    private void StopGrowing()
+    IEnumerator StopGrowing()
     {
+        yield return new WaitForSeconds(growTime);
         growing = false;
-        Invoke(nameof(SetShrink), duration);
+        StartCoroutine(SetShrink());
     }
 
-    private void SetShrink()
+    IEnumerator SetShrink()
     {
+        yield return new WaitForSeconds(duration);
         shrink = true;
         damageOnContact.contactDamage = 5;
         ShootAbility.available = true;
     }
 
-    private void SetReady()
+    IEnumerator SetReady()
     {
+        yield return new WaitForSeconds(delay);
         Ready = true;
     }
 
@@ -50,11 +53,11 @@ public class UltimateAbility : MonoBehaviour, Itrigger
         ShootAbility.available = false;
         
         growing = true;
-        Invoke(nameof(StopGrowing), growTime);
+        StartCoroutine(StopGrowing());
 
         Ready = false;
-        Invoke(nameof(SetReady), delay);
-            
+        StartCoroutine(SetReady());
+
         abilitySlot.TriggerCoolDown(delay);
     }
 }

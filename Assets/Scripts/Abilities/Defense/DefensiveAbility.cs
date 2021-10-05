@@ -12,14 +12,16 @@ public class DefensiveAbility : MonoBehaviour, Itrigger
     private GameObject shieldGo;
     [SerializeField] private Transform prefabParent;
 
-    private void DisableShield()
+    IEnumerator DisableShield()
     {
+        yield return new WaitForSeconds(shield.duration);
         Destroy(shieldGo.gameObject);
         ShootAbility.available = true;
     }
 
-    private void SetReady()
+    IEnumerator SetReady()
     {
+        yield return new WaitForSeconds(shield.delay);
         Ready = true;
     }
 
@@ -33,9 +35,9 @@ public class DefensiveAbility : MonoBehaviour, Itrigger
         ShootAbility.available = false;
             
         abilitySlot.TriggerCoolDown(shield.delay);
-            
-        Invoke(nameof(DisableShield), shield.duration);
-            
-        Invoke(nameof(SetReady), shield.delay);
+
+        StartCoroutine(DisableShield());
+
+        StartCoroutine(SetReady());
     }
 }
