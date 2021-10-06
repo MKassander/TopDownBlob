@@ -4,6 +4,6 @@ namespace Menu
 {
     public static class CharacterColor
     {
-        public static Color playerColor;
+        public static Color playerColor = Color.white;
     }
 }
