@@ -38,7 +38,6 @@ public class DefensiveAbility : MonoBehaviour, ITrigger
         abilitySlot.TriggerCoolDown(shield.delay);
 
         StartCoroutine(DisableShield());
-
         StartCoroutine(SetReady());
     }
 }
