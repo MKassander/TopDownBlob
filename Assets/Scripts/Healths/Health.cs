@@ -15,6 +15,7 @@ namespace Healths
         public virtual void Damage(int amount)
         {
             healthValue -= amount;
+            print(healthValue);
             if (healthValue <= 0) Death();
         }
 

@@ -777,7 +777,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1
   m_Center: {x: 0, y: 0.77, z: 0}
 --- !u!54 &7919143468942922938
 Rigidbody:
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4066d643951066f4fbc6af434434c1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 40
+  maxHealth: 0
 --- !u!1 &7919148959949551977
 GameObject:
   m_ObjectHideFlags: 0
