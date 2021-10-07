@@ -5,9 +5,10 @@ namespace Healths
 {
     public class EnemyHealth : Health
     {
+        private Progress Progress => FindObjectOfType<Progress>();
         protected override void Death()
         {
-            Progress.instance.AddProgress();
+            Progress.AddProgress();
             Destroy(gameObject);
         }
     }

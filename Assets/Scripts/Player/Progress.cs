@@ -5,10 +5,7 @@ namespace Player
 {
     public class Progress : MonoBehaviour
     {
-        public static Progress instance;
-
         private int _level = 1;
-
         private int _currentProgress;
         private int CurrentProgress
         {
@@ -33,7 +30,6 @@ namespace Player
 
         private void Start()
         {
-            instance = this;
             ProgressSlider.maxValue = xpCap;
         }
 
