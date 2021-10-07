@@ -11,8 +11,9 @@ namespace Abilities
         private MovementAbility MovementAbility => GetComponent<MovementAbility>();
         private DefensiveAbility DefensiveAbility => GetComponent<DefensiveAbility>();
         private UltimateAbility UltimateAbility => GetComponent<UltimateAbility>();
+        private UseItem UseItem => GetComponent<UseItem>();
 
-        [SerializeField] private KeyCode shootKey, movementKey, defenseKey, ultKey;
+        [SerializeField] private KeyCode shootKey, movementKey, defenseKey, ultKey, useItemKey;
 
         private void Update()
         {
@@ -20,6 +21,7 @@ namespace Abilities
             if (Input.GetKeyDown(movementKey)) MovementAbility.Trigger();
             if (Input.GetKeyDown(defenseKey)) DefensiveAbility.Trigger();
             if (Input.GetKeyDown(ultKey)) UltimateAbility.Trigger();
+            if (Input.GetKeyDown(useItemKey)) UseItem.Trigger();
         }
     }
 }

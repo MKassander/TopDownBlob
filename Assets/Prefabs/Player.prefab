@@ -143,6 +143,8 @@ GameObject:
   - component: {fileID: 7677868383553393344}
   - component: {fileID: 7677868383553393375}
   - component: {fileID: 3375958022175153487}
+  - component: {fileID: 5757157241303951662}
+  - component: {fileID: 796375736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -211,7 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef833cc1ac2d9c44085743b3d5098f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  maxHealth: 100
+  canBeDamaged: 1
 --- !u!135 &7677868383553393374
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -268,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2099865e2606d2c40a1e8efef9080dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: c8bb7a945eccad447af6669bb7015c68, type: 2}
+  projectile: {fileID: 11400000, guid: f26b30b9803c35b44b32bff1de3ededf, type: 2}
   spawnPoint: {fileID: 7677394680987856349}
   available: 1
   abilitySlot: {fileID: 0}
@@ -300,8 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilitySlot: {fileID: 0}
-  leap: 8
-  delay: 10
+  movementSo: {fileID: 11400000, guid: cca509cefcfa19542a65b0db7908ccc1, type: 2}
 --- !u!114 &7677868383553393375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +337,33 @@ MonoBehaviour:
   movementKey: 304
   defenseKey: 324
   ultKey: 32
+  useItemKey: 101
+--- !u!114 &5757157241303951662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677868383553393368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfa33f14dfdc8143abd96d82641948a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &796375736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677868383553393368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1be63e271e91414d882156561d524f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  item: {fileID: 0}
 --- !u!1 &7677963948124569900
 GameObject:
   m_ObjectHideFlags: 0

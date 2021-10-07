@@ -6,7 +6,7 @@ namespace Healths
     public abstract class Health : MonoBehaviour
     {
         protected int healthValue;
-        [SerializeField]private int maxHealth;
+        [SerializeField]protected int maxHealth;
 
         private void Start()
         {
@@ -15,7 +15,6 @@ namespace Healths
         public virtual void Damage(int amount)
         {
             healthValue -= amount;
-            print(healthValue);
             if (healthValue <= 0) Death();
         }
 
