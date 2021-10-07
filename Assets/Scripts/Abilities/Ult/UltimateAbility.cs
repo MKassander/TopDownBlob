@@ -8,12 +8,13 @@ namespace Abilities.Ult
 {
     public abstract class UltimateAbility : MonoBehaviour, ITrigger
     {
+        [SerializeField] private AbilitySlot abilitySlot;
         protected ShootAbility ShootAbility => GetComponent<ShootAbility>();
         protected PlayerHealth PlayerHealth => GetComponent<PlayerHealth>();
         protected bool ready = true;
         [SerializeField] private float delay;
     
-        [SerializeField] private AbilitySlot abilitySlot;
+        
 
         private IEnumerator SetReady()
         {

@@ -5,7 +5,7 @@ public class SoItem : ScriptableObject
 {
     public Sprite icon;
     public Color iconColor;
-    public int value, duration;
+    public int value;
     public ItemType itemType;
 }
 public enum ItemType

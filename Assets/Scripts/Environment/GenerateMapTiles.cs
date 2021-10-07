@@ -5,10 +5,10 @@ namespace Environment
     public class GenerateMapTiles : MonoBehaviour
     {
         public GameObject[] tiles;
-
+        private Vector2 _tilePlacement;
+        
         public int total;
         public int lineBreakNum;
-        private Vector2 _tilePlacement;
 
         private void Start()
         {

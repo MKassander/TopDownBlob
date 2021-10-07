@@ -4,6 +4,5 @@ using UnityEngine;
 public class SoDefensive : ScriptableObject
 {
     public GameObject prefab;
-    public Sprite icon;
     public int delay, duration;
 }

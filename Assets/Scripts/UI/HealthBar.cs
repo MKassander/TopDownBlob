@@ -1,18 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+namespace UI
 {
-    private Slider Slider => GetComponent<Slider>();
-    public static HealthBar instance;
-
-    private void Start()
+    public class HealthBar : MonoBehaviour
     {
-        instance = this;
-    }
+        private Slider Slider => GetComponent<Slider>();
 
-    public void UpdateVal(int val)
-    {
-        Slider.value = val;
+        public void UpdateVal(int val)
+        {
+            Slider.value = val;
+        }
     }
 }

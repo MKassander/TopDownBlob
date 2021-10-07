@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class DamageOnContact : MonoBehaviour
 {
-    public int contactDamage;
     [SerializeField]private bool player, enemy;
+    public int contactDamage;
+    
     private void OnCollisionEnter(Collision other)
     {
         if (enemy)

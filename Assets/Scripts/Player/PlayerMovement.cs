@@ -5,9 +5,8 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         private Rigidbody Rigidbody => GetComponent<Rigidbody>();
-
-        public float speed;
         private Vector2 _mousePos;
+        public float speed;
 
         private void FixedUpdate()
         {

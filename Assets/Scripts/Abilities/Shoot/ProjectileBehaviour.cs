@@ -8,7 +8,6 @@ namespace Abilities.Shoot
         private Rigidbody RigidBody => GetComponent<Rigidbody>();
         public float speed;
         public int destroyAfter;
-    
 
         private void Start()
         {

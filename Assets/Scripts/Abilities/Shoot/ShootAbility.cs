@@ -8,12 +8,12 @@ namespace Abilities.Shoot
     {
         [SerializeField] private SoProjectile projectile;
         private Animator Animator => GetComponent<Animator>();
-        public Transform spawnPoint;
+        [SerializeField] private AbilitySlot abilitySlot;
+        [SerializeField] private Transform spawnPoint;
+        
         private bool _ready = true;
-        public bool available = true;
-
-        public AbilitySlot abilitySlot;
-        private static readonly int AttackTrigger = Animator.StringToHash("AttackTrigger");
+        [HideInInspector]public bool available = true;
+        private readonly int _attackTrigger = Animator.StringToHash("AttackTrigger");
 
         private IEnumerator SetReady()
         {
@@ -31,7 +31,7 @@ namespace Abilities.Shoot
             proj.GetComponent<DamageOnContact>().contactDamage = projectile.damage;
 
             _ready = false;
-            Animator.SetTrigger(AttackTrigger);
+            Animator.SetTrigger(_attackTrigger);
         
             abilitySlot.TriggerCoolDown(projectile.delay);
 

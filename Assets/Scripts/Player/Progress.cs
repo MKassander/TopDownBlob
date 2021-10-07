@@ -5,6 +5,12 @@ namespace Player
 {
     public class Progress : MonoBehaviour
     {
+        private Slider ProgressSlider => GetComponent<Slider>();
+        [SerializeField] private float capModifier;
+        [SerializeField] private int xpGain, xpCap;
+        [SerializeField] private Text levelText;
+        [SerializeField] private GameObject levelTextGo;
+
         private int _level = 1;
         private int _currentProgress;
         private int CurrentProgress
@@ -21,12 +27,6 @@ namespace Player
                 ProgressSlider.value = value;
             } 
         }
-
-        [SerializeField] private float capModifier;
-        [SerializeField] private int xpGain, xpCap;
-        private Slider ProgressSlider => GetComponent<Slider>();
-        [SerializeField] private Text levelText;
-        [SerializeField] private GameObject levelTextGo;
 
         private void Start()
         {

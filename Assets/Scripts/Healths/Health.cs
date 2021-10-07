@@ -5,8 +5,8 @@ namespace Healths
 {
     public abstract class Health : MonoBehaviour
     {
-        protected int healthValue;
         [SerializeField]protected int maxHealth;
+        protected int healthValue;
 
         private void Start()
         {

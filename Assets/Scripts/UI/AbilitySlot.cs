@@ -6,7 +6,6 @@ namespace UI
     public class AbilitySlot : MonoBehaviour
     {
         private Slider Slider => GetComponentInChildren<Slider>();
-        private Image Image => GetComponent<Image>();
         private float _timer;
 
         public void TriggerCoolDown(float time)

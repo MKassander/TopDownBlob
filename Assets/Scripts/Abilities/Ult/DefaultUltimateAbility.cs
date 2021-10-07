@@ -6,10 +6,8 @@ namespace Abilities.Ult
     public class DefaultUltimateAbility : UltimateAbility
     {
         [SerializeField] private float growSpeed, growTime, duration;
-        private bool _growing, _shrink;
-
         private DamageOnContact DamageOnContact => GetComponent<DamageOnContact>();
-    
+        private bool _growing, _shrink;
 
         private void FixedUpdate()
         {

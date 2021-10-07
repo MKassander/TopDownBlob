@@ -4,6 +4,5 @@ using UnityEngine;
 public class SoProjectile : ScriptableObject
 {
     public GameObject prefab;
-    public Sprite icon;
     public int delay, damage;
 }

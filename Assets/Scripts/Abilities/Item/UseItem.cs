@@ -1,27 +1,29 @@
-using Abilities;
 using Healths;
 using UnityEngine;
 
-public class UseItem : MonoBehaviour, ITrigger
+namespace Abilities.Item
 {
-    private PlayerHealth PlayerHealth => GetComponent<PlayerHealth>();
-    private Inventory Inventory => GetComponent<Inventory>();
-    
-    public void Trigger()
+    public class UseItem : MonoBehaviour, ITrigger
     {
-        if (Inventory.item == null) return;
-        
-        switch (Inventory.item.itemType)
+        private PlayerHealth PlayerHealth => GetComponent<PlayerHealth>();
+        private Inventory Inventory => GetComponent<Inventory>();
+    
+        public void Trigger()
         {
-            case ItemType.Health:
+            if (Inventory.item == null) return;
+        
+            switch (Inventory.item.itemType)
             {
-                PlayerHealth.GainHealth(Inventory.item.value);
-            } break;
-            case ItemType.Damage:
-            {
-                // Todo: Damage item functionality
-            } break;
+                case ItemType.Health:
+                {
+                    PlayerHealth.GainHealth(Inventory.item.value);
+                } break;
+                case ItemType.Damage:
+                {
+                    // Todo: Damage item functionality
+                } break;
+            }
+            Inventory.DepleteItem();
         }
-        Inventory.DepleteItem();
     }
 }
