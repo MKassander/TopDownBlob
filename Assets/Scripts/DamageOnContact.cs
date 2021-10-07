@@ -28,4 +28,5 @@ public class DamageOnContact : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    //Todo: clean up
 }
