@@ -138,9 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1124372173555029552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d748b538eb45054384c8500cdf6890c, type: 3}
+  m_Script: {fileID: 11500000, guid: cf72f87573ef6ea4280287095c040193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactDamage: 40
-  player: 0
-  enemy: 0
+  contactDamage: 20

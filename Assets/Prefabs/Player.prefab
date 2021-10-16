@@ -253,12 +253,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7677868383553393368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d748b538eb45054384c8500cdf6890c, type: 3}
+  m_Script: {fileID: 11500000, guid: 81d1d3a79ed739643a303fb1700ed2ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamage: 0
-  player: 1
-  enemy: 0
 --- !u!114 &7677868383553393373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,9 +270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: f26b30b9803c35b44b32bff1de3ededf, type: 2}
+  abilitySlot: {fileID: 0}
   spawnPoint: {fileID: 7677394680987856349}
   available: 1
-  abilitySlot: {fileID: 0}
 --- !u!114 &7677868383553393347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692ecbce71ccdfd439a583d06f8fa19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 60
   abilitySlot: {fileID: 0}
+  delay: 60
   growSpeed: 2
   growTime: 1.5
   duration: 10
@@ -362,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1be63e271e91414d882156561d524f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  iconGo: {fileID: 0}
   item: {fileID: 0}
 --- !u!1 &7677963948124569900
 GameObject:

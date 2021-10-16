@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33671332356214816}
   - component: {fileID: 23425660190277278}
   - component: {fileID: 3328121417302935071}
-  - component: {fileID: 6804248425305323961}
+  - component: {fileID: 4479014696112380110}
   m_Layer: 0
   m_Name: GroundThreat
   m_TagString: Untagged
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.62413263, y: 0.14005831, z: 0.81}
   m_Center: {x: -1.5805967, y: 0.068576425, z: 0.019152462}
---- !u!114 &6804248425305323961
+--- !u!114 &4479014696112380110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,9 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206538960988716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d748b538eb45054384c8500cdf6890c, type: 3}
+  m_Script: {fileID: 11500000, guid: 236d5d854e9a95b4c86deed1e6ce0786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactDamage: 10
-  player: 0
-  enemy: 1
+  contactDamage: 20

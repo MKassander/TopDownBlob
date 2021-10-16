@@ -817,12 +817,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7919143468942922887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d748b538eb45054384c8500cdf6890c, type: 3}
+  m_Script: {fileID: 11500000, guid: 236d5d854e9a95b4c86deed1e6ce0786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactDamage: 10
-  player: 0
-  enemy: 1
+  contactDamage: 20
 --- !u!114 &7919143468942922940
 MonoBehaviour:
   m_ObjectHideFlags: 0
