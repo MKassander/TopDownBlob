@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace Menu
 {
-    public class StartButton : MonoBehaviour
+    public class SceneSwitcher : MonoBehaviour
     {
-        public void StartFunction()
+        public void IncrementSceneIndex()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
         }

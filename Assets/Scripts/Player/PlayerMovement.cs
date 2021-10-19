@@ -6,7 +6,7 @@ namespace Player
     {
         private Rigidbody Rigidbody => GetComponent<Rigidbody>();
         private Vector2 _mousePos;
-        public float speed;
+        [SerializeField] private float speed;
 
         private void FixedUpdate()
         {
