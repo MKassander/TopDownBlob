@@ -1,7 +1,7 @@
 
 namespace Healths
 {
-    public class EnvironmentHealth : Health
+    public class EnvironmentHealth : HealthBase
     {
         protected override void Death()
         {

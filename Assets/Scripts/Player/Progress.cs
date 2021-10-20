@@ -1,15 +1,13 @@
+using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Player
 {
     public class Progress : MonoBehaviour
     {
-        private Slider ProgressSlider => GetComponent<Slider>();
         [SerializeField] private float capModifier;
         [SerializeField] private int xpGain, xpCap;
-        [SerializeField] private Text levelText;
-        [SerializeField] private GameObject levelTextGo;
+        [SerializeField] private ProgressFeedback feedback;
 
         private int _level = 1;
         private int _currentProgress;
@@ -24,13 +22,13 @@ namespace Player
                     LevelUp();
                 }
                 _currentProgress = value;
-                ProgressSlider.value = value;
+                feedback.SetSliderValue(value);
             } 
         }
 
         private void Start()
         {
-            ProgressSlider.maxValue = xpCap;
+            feedback.SetSliderMaxValue(xpCap);
         }
 
         public void AddProgress()
@@ -42,9 +40,7 @@ namespace Player
         {
             _level++;
 
-            print(_level);
-            levelTextGo.SetActive(true);
-            levelText.text = "Level " + _level;
+            feedback.EnableAndUpdateLevelText(_level);
 
             ModifyXpCap();
         }
@@ -53,7 +49,7 @@ namespace Player
         {
             var result = xpCap * capModifier;
             xpCap = (int)result;
-            ProgressSlider.maxValue = result;
+            feedback.SetSliderMaxValue(xpCap);
         } 
     }
 }

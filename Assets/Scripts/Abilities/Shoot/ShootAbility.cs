@@ -29,7 +29,7 @@ namespace Abilities.Shoot
             proj.transform.position = spawnPoint.position;
             proj.transform.rotation = spawnPoint.rotation;
 
-            proj.GetComponent<DamageOnContact>().contactDamage = projectile.damage;
+            proj.GetComponent<DamageOnContactBase>().contactDamage = projectile.damage;
 
             _ready = false;
             Animator.SetTrigger(_attackTrigger);

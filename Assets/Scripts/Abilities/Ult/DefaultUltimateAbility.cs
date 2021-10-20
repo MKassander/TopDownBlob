@@ -7,7 +7,7 @@ namespace Abilities.Ult
     public class DefaultUltimateAbility : UltimateAbility
     {
         [SerializeField] private float growSpeed, growTime, duration;
-        private DamageOnContact DamageOnContact => GetComponent<DamageOnContact>();
+        private DamageOnContactBase DamageOnContactBase => GetComponent<DamageOnContactBase>();
         private bool _growing, _shrink;
 
         private void FixedUpdate()
@@ -31,7 +31,7 @@ namespace Abilities.Ult
         {
             yield return new WaitForSeconds(duration);
             _shrink = true;
-            DamageOnContact.contactDamage = 5;
+            DamageOnContactBase.contactDamage = 5;
             ShootAbility.available = true;
             PlayerHealth.canBeDamaged = true;
         }
@@ -39,7 +39,7 @@ namespace Abilities.Ult
         public override void Trigger()
         {
             if (!ready) return;
-            DamageOnContact.contactDamage = 40;
+            DamageOnContactBase.contactDamage = 40;
             ShootAbility.available = false;
             PlayerHealth.canBeDamaged = false;
         

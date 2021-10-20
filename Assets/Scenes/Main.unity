@@ -1967,12 +1967,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 677546025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c4295d3e730044a8608dce5cc3bc31, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d205980719171a429c06ae53454efe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capModifier: 1.5
-  xpGain: 20
-  xpCap: 40
   levelText: {fileID: 532605861}
   levelTextGo: {fileID: 661108330}
 --- !u!114 &677546028
@@ -2704,6 +2701,27 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1104283514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7677868383553393368, guid: 587e69b1f903f7a45821fe7995894d5c, type: 3}
+  m_PrefabInstance: {fileID: 7677394680311235474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1104283515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104283514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c4295d3e730044a8608dce5cc3bc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capModifier: 1.5
+  xpGain: 20
+  xpCap: 40
+  feedback: {fileID: 677546027}
 --- !u!1 &1121171143
 GameObject:
   m_ObjectHideFlags: 0

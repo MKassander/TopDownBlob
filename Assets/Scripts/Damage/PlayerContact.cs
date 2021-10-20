@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Damage
 {
-    public class PlayerDamageOnContact : DamageOnContact
+    public class PlayerContact : DamageOnContactBase
     {
         protected override void CollisionFunction(Collision other)
         {

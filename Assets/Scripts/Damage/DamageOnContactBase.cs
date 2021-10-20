@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Damage
 {
-    public abstract class DamageOnContact : MonoBehaviour
+    public abstract class DamageOnContactBase : MonoBehaviour
     {
         public int contactDamage;
     
@@ -14,7 +14,7 @@ namespace Damage
 
         protected virtual void CollisionFunction(Collision other)
         {
-            other.gameObject.GetComponent<Health>().Damage(contactDamage);
+            other.gameObject.GetComponent<HealthBase>().Damage(contactDamage);
         }
     }
 }

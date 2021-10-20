@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Healths
 {
-    public class PlayerHealth : Health
+    public class PlayerHealth : HealthBase
     {
         private Animator AnimatorComp => GetComponent<Animator>();
         private HealthBar HealthBar => FindObjectOfType<HealthBar>();
